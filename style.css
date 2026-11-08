@@ -862,3 +862,5 @@ footer {
   position: absolute; top: 16px; right: 20px; background: none; border: none;
   color: #fff; font-size: 2.4rem; line-height: 1; cursor: pointer;
 }
+
+.perf-table tr.overall-row td { background: rgba(108,99,255,0.08); font-weight: 700; border-bottom: 2px solid var(--border); }
