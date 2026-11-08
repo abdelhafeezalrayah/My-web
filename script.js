@@ -36,3 +36,22 @@ document.querySelectorAll('.timeline-card, .about-card, .skill-group, .contact-c
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `.visible { opacity: 1 !important; transform: translateY(0) !important; }`;
 document.head.appendChild(styleSheet);
+
+// Screenshot lightbox
+const lightbox = document.getElementById('lightbox');
+if (lightbox) {
+  const lbImg = lightbox.querySelector('img');
+  const lbCap = lightbox.querySelector('.lightbox-caption');
+  const closeLightbox = () => { lightbox.hidden = true; lbImg.src = ''; };
+  document.querySelectorAll('.proof-item').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      lbImg.src = link.href;
+      lbImg.alt = link.querySelector('img').alt;
+      lbCap.textContent = link.dataset.caption;
+      lightbox.hidden = false;
+    });
+  });
+  lightbox.addEventListener('click', e => { if (e.target !== lbImg) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+}
